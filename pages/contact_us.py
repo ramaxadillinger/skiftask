@@ -9,7 +9,7 @@ DATA = {
     'first_name': 'Ivan',
     'last_name': 'Moldovan',
     'email': 'moldova@gmail.com',
-    'message': 'fuck you'
+    'message': 'fuck you' 
 }
 
 class ContactUs(object):
