@@ -22,7 +22,7 @@ class ContactUs(object):
 
     def __init__(self, driver):
         self.driver = driver
-  
+
     def __call__(self):
         self.driver.get(URL)
         wait_selector(self, self.FIRST_NAME, 10)
