@@ -2,7 +2,7 @@ from lib.dom import send_keys, find_element
 from lib.dom import click_button, get_text
 from lib.urls import URL
 from lib.waits import wait_selector
-from selenium.webdriver.common.by import By
+
 
 
 DATA = {
@@ -19,6 +19,7 @@ class ContactUs(object):
     MESSAGE = '[name="message"]'
     BUTTON_SUBMIT = '[type="submit"]'
     BUTTON_RESET = '[type="reset"]'
+    BUTTON_CLICK_ME = '[]'
 
     def __init__(self, driver):
         self.driver = driver
