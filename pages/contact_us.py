@@ -1,8 +1,7 @@
-from lib.dom import send_keys, find_element
+from lib.dom import send_keys
 from lib.dom import click_button, get_text
 from lib.urls import URL
-from lib.waits import wait_selector
-from selenium.webdriver.common.by import By
+from lib.waits import wait_selector, wait_visibility
 
 
 DATA = {
@@ -12,6 +11,7 @@ DATA = {
     'message': 'fuck you' 
 }
 
+
 class ContactUs(object):
     FIRST_NAME = '[name="first_name"]'
     LAST_NAME = '[name="last_name"]'
@@ -19,6 +19,8 @@ class ContactUs(object):
     MESSAGE = '[name="message"]'
     BUTTON_SUBMIT = '[type="submit"]'
     BUTTON_RESET = '[type="reset"]'
+
+    SUCCESS_HEADER = 'h1'
 
     def __init__(self, driver):
         self.driver = driver
@@ -34,6 +36,8 @@ class ContactUs(object):
         send_keys(self.driver, self.EMAIL, DATA['email'])
         send_keys(self.driver, self.MESSAGE, DATA['message'])
 
+    def wait_success_submit(self):
+        return wait_visibility(self.driver, self.SUCCESS_HEADER)
 
     def submit_form(self):
         click_button(self.driver, self.BUTTON_SUBMIT)
@@ -45,6 +49,13 @@ class ContactUs(object):
         d['email'] = get_text(self.driver, self.EMAIL)
         d['message'] = get_text(self.driver, self.EMAIL)
         return d
+
+    def check_empty_fields(self):
+        d = self.get_values()
+        assert d['first_name'] == ''
+        assert d['last_name'] == ''
+        assert d['email'] == ''
+        assert d['message'] == ''
 
     def reset_form(self):
         click_button(self.driver, self.BUTTON_RESET)
