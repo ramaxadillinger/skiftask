@@ -27,8 +27,6 @@ class Loader(object):
     def click_close(self):
         click_button(self.driver, self.BUTTON_CLOSE)
 
-    # def modal_not_present(self):
-    #     return is_disappeared(self.driver, self.MODAL_CLICK)
 
     def button_click_me_is_present(self):
         return wait_visibility(self.driver, self.BUTTON_CLICK_ME)
