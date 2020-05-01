@@ -1,6 +1,6 @@
 from lib.dom import click_button
-from lib.urls import URL_LOADER
-from lib.waits import wait_click_element, wait_visibility, is_disappeared
+from lib.urls import LOADER_URL
+from lib.waits import wait_click_element, wait_visibility, wait_disappeared
 
 
 class Loader(object):
@@ -12,7 +12,7 @@ class Loader(object):
         self.driver = driver
 
     def __call__(self):
-        self.driver.get(URL_LOADER)
+        self.driver.get(LOADER_URL)
         return self
 
     def wait_button_click_me(self):
@@ -26,7 +26,6 @@ class Loader(object):
 
     def click_close(self):
         click_button(self.driver, self.BUTTON_CLOSE)
-
 
     def button_click_me_is_present(self):
         return wait_visibility(self.driver, self.BUTTON_CLICK_ME)

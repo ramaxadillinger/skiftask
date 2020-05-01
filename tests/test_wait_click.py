@@ -1,18 +1,18 @@
 from pages.loader import Loader
 
 
-def test_wait_click(browser):
-    page = Loader(browser)()
-    page.wait_button_click_me()
-    page.click_me()
-    assert page.wait_modal()
-    page.click_close()
+def test_waiting_present_of_button_click_me(browser):
+    loader = Loader(browser)()
+    loader.wait_button_click_me()
+    loader.click_me()
+    assert loader.wait_modal()
+    loader.click_close()
 
 
-def test_modal_close(browser):
-    page = Loader(browser)()
-    page.wait_button_click_me()
-    page.click_me()
-    page.wait_modal()
-    page.click_close()
-    assert page.button_click_me_is_present()
+def test_if_button_click_me_is_visible(browser):
+    loader = Loader(browser)()
+    loader.wait_button_click_me()
+    loader.click_me()
+    loader.wait_modal()
+    loader.click_close()
+    assert loader.button_click_me_is_present()

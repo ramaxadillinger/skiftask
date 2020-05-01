@@ -1,6 +1,6 @@
 from lib.dom import send_keys
 from lib.dom import click_button, get_text
-from lib.urls import URL
+from lib.urls import CONTACT_US_URL
 from lib.waits import wait_selector, wait_visibility
 
 
@@ -26,7 +26,7 @@ class ContactUs(object):
         self.driver = driver
 
     def __call__(self):
-        self.driver.get(URL)
+        self.driver.get(CONTACT_US_URL)
         wait_selector(self.driver, self.FIRST_NAME, 10)
         return self
 
