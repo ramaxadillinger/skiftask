@@ -28,6 +28,8 @@ def wait_click_element(driver, locator, timeout=10):
 
 def wait_disappeared(driver, locator, timeout=5):
     element = WebDriverWait(driver, timeout).until_not(
-        EC.presence_of_element_located((By.CSS_SELECTOR, locator))
+        EC.visibility_of(
+            driver.find_element(By.CSS_SELECTOR, locator)
+        )
     )
     return element
